@@ -1,5 +1,3 @@
-https://cdn.amazonlinux.com/os-images/latest/virtualbox/
-
 # Steps to create a base box
 
 1. Download linux image for virtualbox in
