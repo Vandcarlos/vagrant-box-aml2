@@ -1,0 +1,5 @@
+---
+- name: Install quasar by npm
+  npm:
+    name: quasar-cli
+    global: yes

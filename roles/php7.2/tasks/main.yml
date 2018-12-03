@@ -1,0 +1,6 @@
+---
+- name: Install php7.2 from amazon-linux-extras
+  command: amazon-linux-extras install php7.2 -y
+  become: yes
+  args:
+    creates: /usr/bin/php

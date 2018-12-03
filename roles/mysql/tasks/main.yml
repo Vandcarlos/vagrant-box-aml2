@@ -1,0 +1,50 @@
+---
+- name: Add mysql community reposiroty
+  yum:
+    name: http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm
+    state: installed
+  become: yes
+
+- name: Install Mysql Community Server
+  yum:
+    name: mysql-community-server
+    state: latest
+  become: yes
+
+- name: Install Mysql Python
+  yum:
+    name: MySQL-python
+    state: latest
+  become: yes
+
+- name: Start mysqld service
+  service:
+    name: mysqld
+    state: started
+  become: yes
+
+- name: Change mysql root password and keep track in
+  shell: |
+    password_match=`awk '/A temporary password is generated for/ {a=$0} END{ print a }' /var/log/mysqld.log | awk '{print $(NF)}'`
+    echo $password_match
+    mysql  -uroot -p$password_match --connect-expired-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'P@ssW0rd'; flush privileges; uninstall plugin validate_password"
+    echo "[client]
+    user=root
+    password=P@ssW0rd" > /root/.my.cnf
+  args:
+    creates: /root/.my.cnf
+  notify: restart mysqld
+  become: yes
+
+- name: Add James user
+  mysql_user:
+    login_user: 'root'
+    login_password: 'P@ssW0rd'
+    name: 'james'
+    password: 'secret'
+    priv: '*.*:ALL,GRANT'
+    state: present
+    host: "{{ item }}"
+  with_items:
+    - 'localhost'
+    - '127.0.0.1'

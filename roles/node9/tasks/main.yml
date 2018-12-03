@@ -1,0 +1,6 @@
+---
+- name: Install node9
+  shell: source ~/.nvm/nvm.sh && nvm install 9
+
+- name: Set nvm alias default
+  shell: source ~/.nvm/nvm.sh && nvm alias default 9

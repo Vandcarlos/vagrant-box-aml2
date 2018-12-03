@@ -1,0 +1,24 @@
+---
+- name: Download phpunip.phar
+  get_url:
+    url: https://phar.phpunit.de/phpunit.phar
+    dest: /home/ec2-user/phpunit.phar
+
+- name: chmod phpunit.phar
+  file:
+    dest: /home/ec2-user/phpunit.phar
+    mode: +x
+
+- name: Move phpunit.phar to /usr/bin
+  command: mv /home/ec2-user/phpunit.phar /usr/local/bin/phpunit
+  become: yes
+  args:
+    creates: /usr/local/bin/phpunit
+
+- name: Create symlink
+  file:
+    src: /usr/local/bin/phpunit
+    dest: /usr/bin/phpunit
+    state: link
+    force: yes
+  become: yes
