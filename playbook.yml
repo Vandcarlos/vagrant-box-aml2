@@ -12,6 +12,5 @@
     - roles/nvm
     - roles/php-fpm
     - roles/php7.2
-    - roles/phpunit
     - roles/quasar
     - roles/mysql
