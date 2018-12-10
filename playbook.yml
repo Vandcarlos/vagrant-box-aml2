@@ -1,8 +1,10 @@
 ---
 - hosts: aml2
   roles:
-    - roles/composer
-    - roles/epel
+    - geerlingguy.composer
+    - geerlingguy.redis
+    - oktapodia.phpunit
+    - ocha.yarn
     - roles/git
     - roles/laravel
     - roles/nginx
@@ -12,6 +14,5 @@
     - roles/php7.2
     - roles/phpunit
     - roles/quasar
-    - roles/redis
     - roles/yarn
     - roles/mysql
