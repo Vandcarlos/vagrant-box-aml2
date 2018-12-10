@@ -14,12 +14,7 @@
     - sites-available
     - sites-enabled
 
-- name: Copy conf
-  copy:
-    src: files/nginx.conf
-    dest: /etc/nginx/nginx.conf
-  become: yes
-
+- include: copy_files.yml
 - include: code_path.yml
 - include: pid_bug.yml
 

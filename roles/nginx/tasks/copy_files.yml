@@ -1,0 +1,12 @@
+---
+- name: Copy nginx.conf
+  copy:
+    src: files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+  become: yes
+
+- name: Copy gzip.conf
+  copy:
+    src: files/gzip.conf
+    dest: /etc/nginx/gzip.conf
+  become: yes

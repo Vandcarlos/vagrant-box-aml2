@@ -1,5 +1,6 @@
 ---
 - src: geerlingguy.composer
 - src: geerlingguy.redis
+- src: geerlingguy.git
 - src: oktapodia.phpunit
 - src: ocha.yarn
