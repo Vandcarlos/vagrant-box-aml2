@@ -17,10 +17,11 @@
     state: latest
   become: yes
 
-- name: Start mysqld service
+- name: Ensure mysqld service is running
   service:
     name: mysqld
-    state: started
+    state: reloaded
+    enabled: yes
   become: yes
 
 - name: Change mysql root password and keep track in
@@ -33,7 +34,6 @@
     password=P@ssW0rd" > /root/.my.cnf
   args:
     creates: /root/.my.cnf
-  notify: restart mysqld
   become: yes
 
 - name: Add James user

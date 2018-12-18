@@ -1,7 +1,0 @@
----
-dependencies:
-  - php7.2
-  - php-fpm
-  - geerlingguy.composer
-  - oktapodia.phpunit
-  - nginx

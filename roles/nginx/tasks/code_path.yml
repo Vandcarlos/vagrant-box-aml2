@@ -1,5 +1,0 @@
----
-- name: Make project folder
-  file:
-    path: /home/ec2-user/Code
-    state: directory

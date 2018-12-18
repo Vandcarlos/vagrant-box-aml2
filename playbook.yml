@@ -1,28 +1,18 @@
 ---
-# - hosts: aml2
-#   roles:
-#     - geerlingguy.composer
-#     - geerlingguy.redis
-#     - oktapodia.phpunit
-#     - ocha.yarn
-#     - roles/git
-#     - roles/laravel
-#     - roles/nginx
-#     - roles/node9
-#     - roles/nvm
-#     - roles/php-fpm
-#     - roles/php7.2
-#     - roles/quasar
-#     - roles/mysql
-
 - hosts: aml2
   roles:
-    - roles/epel
-    - roles/php7.2
-    - geerlingguy.composer
-    - geerlingguy.redis
-    - geerlingguy.git
-    - oktapodia.phpunit
-    - ocha.yarn
-    - roles/nginx
-  become: yes
+  - mysql
+  - vandcarlos.php_aml2
+  - vandcarlos.nginx_aml2
+  - vandcarlos.node_aml2
+  - vandcarlos.repos_aml2
+  - role: geerlingguy.git
+    become: yes
+  - role: geerlingguy.composer
+    become: yes
+  - role: geerlingguy.redis
+    become: yes
+  - role: oktapodia.phpunit
+    become: yes
+  - role: ocha.yarn
+    become: yes
