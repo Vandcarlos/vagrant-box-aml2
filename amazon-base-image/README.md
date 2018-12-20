@@ -1,4 +1,4 @@
-# Genate base box image
+# Genate base box image for provision
 
 1. Download linux image for virtualbox in
 [Latest image for virtualbox](https://cdn.amazonlinux.com/os-images/latest/virtualbox/)
@@ -27,4 +27,15 @@ vagrant box add aml2 --name=aml2
 run
 ```bash
 genisoimage -output seed.iso -volid cidata -joliet -rock user-data meta-data
+```
+
+## Provision machine
+1. Run a vagrant up base
+```bash
+vagrant up base
+```
+
+2. After the machine up and provisioned package the machine
+```bash
+vagrant package --output=aml2.box
 ```

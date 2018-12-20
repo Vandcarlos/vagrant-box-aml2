@@ -20,7 +20,7 @@
 - name: Ensure mysqld service is running
   service:
     name: mysqld
-    state: reloaded
+    state: restarted
     enabled: yes
   become: yes
 
