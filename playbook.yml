@@ -1,0 +1,18 @@
+---
+- hosts: aml2
+  roles:
+  - ../roles/mysql
+  - vandcarlos.php_aml2
+  - vandcarlos.nginx_aml2
+  - vandcarlos.node_aml2
+  - vandcarlos.repos_aml2
+  - role: geerlingguy.git
+    become: yes
+  - role: geerlingguy.composer
+    become: yes
+  - role: geerlingguy.redis
+    become: yes
+  - role: oktapodia.phpunit
+    become: yes
+  - role: ocha.yarn
+    become: yes

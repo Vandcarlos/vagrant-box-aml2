@@ -1,7 +1,0 @@
----
-dependencies:
-  - php7.2
-  - php-fpm
-  - composer
-  - phpunit
-  - nginx
